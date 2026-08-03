@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拼字挑戰</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>✏️ 拼字挑戰</h1>
+</header>
+
+<div class="container">
+
+    <h2>
+        ⭐ 分數：<span id="score">0</span>
+    </h2>
+<h2>
+❤️ <span id="life">3</span>
+</h2>
+    <h2>
+        🏆 最高分：<span id="highScore">0</span>
+    </h2>
+    <h2 id="achievement">
+🏅 尚未獲得成就
+</h2>
+<div id="achievementPopup"></div>
+
+    <img id="wordImage" src="" width="250">
+
+    <h2>請拼出圖片的英文</h2>
+
+    <h1 id="answer">_ _ _</h1>
+    <h2 id="message"></h2>
+    <div id="starAnimation"></div>
+
+    <div id="letters"></div>
+
+    <br>
+
+    <button onclick="clearAnswer()">
+        🗑️ 清除
+    </button>
+
+    <br><br>
+
+    <button onclick="location.href='index.html'">
+        🏠 回首頁
+    </button>
+
+</div>
+
+<script src="words.js"></script>
+<script src="spelling.js"></script>
+
+</body>
+
+</html>
