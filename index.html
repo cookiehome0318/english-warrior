@@ -2,63 +2,1177 @@
 <html lang="zh-TW">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>英文小勇士</title>
-    <link rel="stylesheet" href="style.css">
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>英文小勇士 🌈</title>
+
+<style>
+
+/* =====================================
+   英文小勇士｜可愛首頁
+   ===================================== */
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+
+    margin:0;
+
+    min-height:100vh;
+
+    font-family:
+    "Noto Sans TC",
+    "Microsoft JhengHei",
+    Arial,
+    sans-serif;
+
+    background:
+    linear-gradient(
+        180deg,
+        #dff6ff 0%,
+        #f9f4ff 45%,
+        #fff8e8 100%
+    );
+
+    color:#4b4260;
+
+}
+
+
+/* =====================================
+   背景小星星
+   ===================================== */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    opacity:.5;
+
+    background-image:
+
+        radial-gradient(
+            circle at 10% 15%,
+            #ffffff 0 5px,
+            transparent 6px
+        ),
+
+        radial-gradient(
+            circle at 85% 12%,
+            #ffffff 0 4px,
+            transparent 5px
+        ),
+
+        radial-gradient(
+            circle at 20% 75%,
+            #ffffff 0 4px,
+            transparent 5px
+        ),
+
+        radial-gradient(
+            circle at 90% 75%,
+            #ffffff 0 5px,
+            transparent 6px
+        );
+
+}
+
+
+/* =====================================
+   頁首
+   ===================================== */
+
+header{
+
+    text-align:center;
+
+    padding:
+    32px 20px 18px;
+
+}
+
+.logo{
+
+    display:inline-block;
+
+    font-size:48px;
+
+    animation:
+    floatLogo 3s ease-in-out infinite;
+
+}
+
+h1{
+
+    margin:
+    5px 0 8px;
+
+    font-size:
+    clamp(34px,7vw,58px);
+
+    font-weight:
+    900;
+
+    letter-spacing:2px;
+
+    color:#6c63c9;
+
+    text-shadow:
+    3px 3px 0 #ffffff;
+
+}
+
+.subtitle{
+
+    margin:0;
+
+    font-size:18px;
+
+    color:#817894;
+
+    font-weight:700;
+
+}
+
+
+@keyframes floatLogo{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
+
+}
+
+
+/* =====================================
+   主容器
+   ===================================== */
+
+.container{
+
+    width:
+    min(100% - 32px, 900px);
+
+    margin:
+    0 auto 40px;
+
+}
+
+
+/* =====================================
+   小勇士狀態列
+   ===================================== */
+
+.status-bar{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:12px;
+
+    margin:
+    10px 0 24px;
+
+}
+
+.status-card{
+
+    background:#ffffff;
+
+    border-radius:20px;
+
+    padding:
+    14px 10px;
+
+    text-align:center;
+
+    box-shadow:
+    0 7px 18px
+    rgba(90,70,120,.12);
+
+}
+
+.status-icon{
+
+    display:block;
+
+    font-size:25px;
+
+}
+
+.status-label{
+
+    display:block;
+
+    font-size:12px;
+
+    color:#999;
+
+    margin-top:3px;
+
+}
+
+.status-value{
+
+    display:block;
+
+    font-size:19px;
+
+    font-weight:900;
+
+    color:#6258bb;
+
+}
+
+
+/* =====================================
+   遊戲大廳
+   ===================================== */
+
+.game-box{
+
+    background:
+    rgba(255,255,255,.92);
+
+    border-radius:30px;
+
+    padding:
+    24px;
+
+    box-shadow:
+    0 12px 35px
+    rgba(90,70,120,.16);
+
+    border:
+    3px solid rgba(255,255,255,.9);
+
+}
+
+.game-title{
+
+    text-align:center;
+
+    margin:
+    0 0 20px;
+
+    font-size:25px;
+
+    font-weight:900;
+
+    color:#6258bb;
+
+}
+
+.game-title span{
+
+    display:block;
+
+    font-size:14px;
+
+    color:#aaa;
+
+    margin-top:5px;
+
+}
+ 
+/* =====================================
+   遊戲按鈕網格
+   ===================================== */
+
+.game-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:16px;
+
+}
+
+
+/* =====================================
+   遊戲卡片
+   ===================================== */
+
+.game-card{
+
+    position:relative;
+
+    border:none;
+
+    width:100%;
+
+    min-height:125px;
+
+    padding:20px;
+
+    border-radius:24px;
+
+    cursor:pointer;
+
+    background:#ffffff;
+
+    color:#514865;
+
+    box-shadow:
+    0 7px 0 #ded9e9,
+    0 12px 20px
+    rgba(80,70,110,.12);
+
+    transition:
+    transform .18s ease,
+    box-shadow .18s ease;
+
+    text-align:left;
+
+    font-family:inherit;
+
+}
+
+.game-card:hover{
+
+    transform:
+    translateY(-5px);
+
+    box-shadow:
+    0 11px 0 #ded9e9,
+    0 18px 25px
+    rgba(80,70,110,.16);
+
+}
+
+.game-card:active{
+
+    transform:
+    translateY(3px);
+
+    box-shadow:
+    0 3px 0 #ded9e9;
+
+}
+
+
+/* =====================================
+   卡片圖示
+   ===================================== */
+
+.card-icon{
+
+    width:58px;
+
+    height:58px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:18px;
+
+    font-size:32px;
+
+    margin-bottom:10px;
+
+    background:#f0edff;
+
+}
+
+
+/* =====================================
+   卡片文字
+   ===================================== */
+
+.card-title{
+
+    display:block;
+
+    font-size:20px;
+
+    font-weight:900;
+
+    margin-bottom:4px;
+
+}
+
+.card-description{
+
+    display:block;
+
+    font-size:13px;
+
+    color:#999;
+
+    font-weight:600;
+
+}
+
+
+/* =====================================
+   卡片右上角裝飾
+   ===================================== */
+
+.card-star{
+
+    position:absolute;
+
+    right:17px;
+
+    top:14px;
+
+    font-size:20px;
+
+    opacity:.8;
+
+}
+
+
+/* =====================================
+   不同功能卡片
+   ===================================== */
+
+.card-learn{
+
+    background:
+    linear-gradient(
+        135deg,
+        #fffdf2,
+        #fff4c7
+    );
+
+}
+
+.card-learn .card-icon{
+
+    background:#fff0a8;
+
+}
+
+
+.card-picture{
+
+    background:
+    linear-gradient(
+        135deg,
+        #f4fbff,
+        #dff4ff
+    );
+
+}
+
+.card-picture .card-icon{
+
+    background:#ccefff;
+
+}
+
+
+.card-spelling{
+
+    background:
+    linear-gradient(
+        135deg,
+        #fff3fb,
+        #ffe1f2
+    );
+
+}
+
+.card-spelling .card-icon{
+
+    background:#ffcce7;
+
+}
+
+
+.card-listening{
+
+    background:
+    linear-gradient(
+        135deg,
+        #f5f2ff,
+        #e8e0ff
+    );
+
+}
+
+.card-listening .card-icon{
+
+    background:#dcd0ff;
+
+}
+
+
+.card-quiz{
+
+    background:
+    linear-gradient(
+        135deg,
+        #f0fff8,
+        #d9f8e9
+    );
+
+}
+
+.card-quiz .card-icon{
+
+    background:#c8f0dc;
+
+}
+
+
+.card-review{
+
+    background:
+    linear-gradient(
+        135deg,
+        #fff8f0,
+        #ffe8d2
+    );
+
+}
+
+.card-review .card-icon{
+
+    background:#ffd8b5;
+
+}
+
+
+.card-sentence{
+
+    background:
+    linear-gradient(
+        135deg,
+        #f3fbff,
+        #dcefff
+    );
+
+}
+
+.card-sentence .card-icon{
+
+    background:#c7e7ff;
+
+}
+
+
+.card-center{
+
+    background:
+    linear-gradient(
+        135deg,
+        #f8f4ff,
+        #e9ddff
+    );
+
+}
+
+.card-center .card-icon{
+
+    background:#d9c7ff;
+
+}
+
+
+.card-shop{
+
+    background:
+    linear-gradient(
+        135deg,
+        #fff7fb,
+        #ffdfea
+    );
+
+}
+
+.card-shop .card-icon{
+
+    background:#ffc5da;
+
+}
+
+
+/* =====================================
+   手機版
+   ===================================== */
+
+@media(max-width:650px){
+
+    .game-grid{
+
+        grid-template-columns:
+        1fr;
+
+    }
+
+    .game-card{
+
+        min-height:110px;
+
+    }
+
+    .status-bar{
+
+        gap:8px;
+
+    }
+
+    .game-box{
+
+        padding:16px;
+
+        border-radius:24px;
+
+    }
+
+}
+
+</style>
 </head>
 
 <body>
 
-    <header>
-        <h1>📚 英文小勇士</h1>
-    </header>
+<header>
 
-    <div class="container">
+    <div class="logo">🧸✨</div>
 
-        <h2>📖 英文單字學習</h2>
+    <h1>英文小勇士</h1>
 
-        <button onclick="location.href='learn.html'">
-            📖 學單字
-        </button>
+    <p class="subtitle">
+        🌈 一起學英文，一起變強！ 🌈
+    </p>
 
-<button onclick="location.href='picture.html'">
-🖼️ 看圖選字
-</button>
-
-<button onclick="location.href='spelling.html'">
-✏️ 拼字挑戰
-</button>
-
-<button onclick="location.href='listening.html'">
-    🎧 聽力練習
-</button>
-<button onclick="location.href='quiz.html'">
-📝 小測驗
-</button>
-
-<button onclick="location.href='review.html'">
-    📚 錯題再練習
-    <span id="wrongCount">0</span> 題
-</button>
-
-<button onclick="location.href='sentence.html'">
-    📝 句子練習
-</button>
-
-<button onclick="location.href='learning.html'">
-📊 學習中心
-</button>
-
-        <button onclick="location.href='shop.html'">
-🛒 商城
-</button>
+</header>
 
 
+<div class="container">
+
+
+    <!-- ================================
+         玩家資料
+         ================================ -->
+
+    <div class="status-bar">
+
+        <div class="status-card">
+
+            <span class="status-icon">🪙</span>
+
+            <span class="status-label">
+                我的金幣
+            </span>
+
+            <span
+                class="status-value"
+                id="coins"
+            >
+                0
+            </span>
+
+        </div>
+
+
+        <div class="status-card">
+
+            <span class="status-icon">🏆</span>
+
+            <span class="status-label">
+                最高分
+            </span>
+
+            <span
+                class="status-value"
+                id="highScore"
+            >
+                0
+            </span>
+
+        </div>
+
+
+        <div class="status-card">
+
+            <span class="status-icon">⭐</span>
+
+            <span class="status-label">
+                等級
+            </span>
+
+            <span
+                class="status-value"
+                id="level"
+            >
+                1
+            </span>
+
+        </div>
 
     </div>
 
-    <script src="index.js"></script>
+
+
+    <!-- ================================
+         遊戲大廳
+         ================================ -->
+
+    <div class="game-box">
+
+        <h2 class="game-title">
+
+            🎮 英文學習遊戲
+
+            <span>
+                選一個遊戲開始冒險吧！
+            </span>
+
+        </h2>
+
+
+        <div class="game-grid">
+
+
+            <!-- 學單字 -->
+
+            <button
+                class="game-card card-learn"
+                onclick="location.href='learn.html'"
+            >
+
+                <span class="card-star">
+                    ⭐
+                </span>
+
+                <span class="card-icon">
+                    📖
+                </span>
+
+                <span class="card-title">
+                    學單字
+                </span>
+
+                <span class="card-description">
+                    認識新的英文單字
+                </span>
+
+            </button>
+
+
+
+            <!-- 看圖選字 -->
+
+            <button
+                class="game-card card-picture"
+                onclick="location.href='picture.html'"
+            >
+
+                <span class="card-star">
+                    🌟
+                </span>
+
+                <span class="card-icon">
+                    🖼️
+                </span>
+
+                <span class="card-title">
+                    看圖選字
+                </span>
+
+                <span class="card-description">
+                    看圖片找出正確單字
+                </span>
+
+            </button>
+
+
+
+            <!-- 拼字挑戰 -->
+
+            <button
+                class="game-card card-spelling"
+                onclick="location.href='spelling.html'"
+            >
+
+                <span class="card-star">
+                    🔥
+                </span>
+
+                <span class="card-icon">
+                    ✏️
+                </span>
+
+                <span class="card-title">
+                    拼字挑戰
+                </span>
+
+                <span class="card-description">
+                    看圖完成英文拼字
+                </span>
+
+            </button>
+
+
+
+            <!-- 聽力練習 -->
+
+            <button
+                class="game-card card-listening"
+                onclick="location.href='listening.html'"
+            >
+
+                <span class="card-star">
+                    🎵
+                </span>
+
+                <span class="card-icon">
+                    🎧
+                </span>
+
+                <span class="card-title">
+                    聽力練習
+                </span>
+
+                <span class="card-description">
+                    聽聲音選出正確答案
+                </span>
+
+            </button>
+
+
+
+            <!-- 小測驗 -->
+
+            <button
+                class="game-card card-quiz"
+                onclick="location.href='quiz.html'"
+            >
+
+                <span class="card-star">
+                    ✨
+                </span>
+
+                <span class="card-icon">
+                    📝
+                </span>
+
+                <span class="card-title">
+                    小測驗
+                </span>
+
+                <span class="card-description">
+                    挑戰你的英文實力
+                </span>
+
+            </button>
+
+
+
+            <!-- 錯題再練習 -->
+
+            <button
+                class="game-card card-review"
+                onclick="location.href='review.html'"
+            >
+
+                <span class="card-star">
+                    💪
+                </span>
+
+                <span class="card-icon">
+                    📚
+                </span>
+
+                <span class="card-title">
+                    錯題再練習
+                </span>
+
+                <span class="card-description">
+                    把不熟的單字再練一次
+                </span>
+
+                <span
+                    id="wrongCount"
+                    style="
+                        display:inline-block;
+                        margin-top:8px;
+                        padding:4px 10px;
+                        border-radius:20px;
+                        background:#fff;
+                        color:#ff8a65;
+                        font-size:12px;
+                        font-weight:800;
+                    "
+                >
+                    0 題
+                </span>
+
+            </button>
+
+
+
+            <!-- 句子練習 -->
+
+            <button
+                class="game-card card-sentence"
+                onclick="location.href='sentence.html'"
+            >
+
+                <span class="card-star">
+                    💬
+                </span>
+
+                <span class="card-icon">
+                    📝
+                </span>
+
+                <span class="card-title">
+                    句子練習
+                </span>
+
+                <span class="card-description">
+                    用英文單字造句
+                </span>
+
+            </button>
+
+
+
+            <!-- 學習中心 -->
+
+            <button
+                class="game-card card-center"
+                onclick="location.href='learning.html'"
+            >
+
+                <span class="card-star">
+                    🏆
+                </span>
+
+                <span class="card-icon">
+                    📊
+                </span>
+
+                <span class="card-title">
+                    學習中心
+                </span>
+
+                <span class="card-description">
+                    查看學習進度與成績
+                </span>
+
+            </button>
+
+
+
+            <!-- 商城 -->
+
+            <button
+                class="game-card card-shop"
+                onclick="location.href='shop.html'"
+            >
+
+                <span class="card-star">
+                    🎁
+                </span>
+
+                <span class="card-icon">
+                    🛒
+                </span>
+
+                <span class="card-title">
+                    英雄商城
+                </span>
+
+                <span class="card-description">
+                    用金幣換取可愛獎勵
+                </span>
+
+            </button>
+
+
+        </div>
+
+    </div>
+
+
+</div>
+
+ 
+<!-- =================================
+     首頁小提示
+     ================================= -->
+
+<div
+    style="
+        text-align:center;
+        margin:22px 0 8px;
+        color:#9a91aa;
+        font-size:14px;
+        font-weight:700;
+    "
+>
+    🌟 每天學一點，英文越來越厲害！ 🌟
+</div>
+
+
+<div
+    style="
+        text-align:center;
+        font-size:26px;
+        letter-spacing:8px;
+        margin-bottom:25px;
+    "
+>
+    ⭐ 🧸 ⭐ 🌈 ⭐
+</div>
+
+
+<!-- =================================
+     原本的 index.js
+     ================================= -->
+
+<script src="index.js"></script>
+
+
+<script>
+
+/* =====================================
+   首頁資料
+   ===================================== */
+
+function updateHomeData(){
+
+    const coins =
+    Number(
+        localStorage.getItem("coins")
+    ) || 0;
+
+    const highScore =
+    Number(
+        localStorage.getItem(
+            "spellingHighScore"
+        )
+    ) || 0;
+
+    const level =
+    Number(
+        localStorage.getItem("level")
+    ) || 1;
+
+
+    const coinsElement =
+    document.getElementById("coins");
+
+    const scoreElement =
+    document.getElementById("highScore");
+
+    const levelElement =
+    document.getElementById("level");
+
+
+    if(coinsElement){
+
+        coinsElement.textContent =
+        coins;
+
+    }
+
+
+    if(scoreElement){
+
+        scoreElement.textContent =
+        highScore;
+
+    }
+
+
+    if(levelElement){
+
+        levelElement.textContent =
+        level;
+
+    }
+
+
+    /* ===============================
+       錯題數
+       =============================== */
+
+    const wrongWords =
+    JSON.parse(
+        localStorage.getItem(
+            "spellingWrongWords"
+        )
+    ) || [];
+
+
+    const wrongElement =
+    document.getElementById(
+        "wrongCount"
+    );
+
+
+    if(wrongElement){
+
+        wrongElement.textContent =
+        wrongWords.length + " 題";
+
+    }
+
+}
+
+
+/* =====================================
+   首頁載入
+   ===================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        updateHomeData();
+
+    }
+);
+
+
+/* =====================================
+   每次回到首頁更新資料
+   ===================================== */
+
+window.addEventListener(
+    "pageshow",
+    function(){
+
+        updateHomeData();
+
+    }
+);
+
+</script>
+
 </body>
 
 </html>
+
