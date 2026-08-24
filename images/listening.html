@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>🎧 聽力練習</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+<h1>🎧 聽力練習</h1>
+
+</header>
+
+<div class="container">
+
+<h2>
+
+⭐ 分數：
+<span id="score">0</span>
+
+</h2>
+
+<h2>
+
+❤️
+<span id="life">3</span>
+
+</h2>
+
+<h2>
+
+🏆 最高分：
+<span id="highScore">0</span>
+
+</h2>
+
+<h2 id="combo">
+
+🔥 Combo x0
+
+</h2>
+<h2 id="achievement">
+🏅 尚未獲得成就
+</h2>
+
+<button onclick="location.href='quiz.html'">
+📝 小測驗
+</button>
+
+<button id="playButton"
+onclick="playWord()">
+
+🔊 播放單字
+
+</button>
+
+<br><br>
+
+<div id="choices"></div>
+
+<br>
+
+<div id="message"></div>
+
+<br>
+
+<button onclick="location.href='index.html'">
+    🏠 回首頁
+</button>
+
+🏠 回首頁
+
+</button>
+
+</div>
+
+<script src="words.js"></script>
+
+<script src="listening.js"></script>
+
+</body>
+
+</html>

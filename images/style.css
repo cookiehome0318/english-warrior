@@ -1,0 +1,744 @@
+/* ===== 拼字挑戰 ===== */
+
+#letters{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:12px;
+    margin:20px auto;
+    max-width:650px;
+}
+
+#letters button{
+    width:70px;
+    height:70px;
+    font-size:32px;
+    font-weight:bold;
+    border-radius:15px;
+}
+
+#answer{
+    font-size:48px;
+    color:#4CAF50;
+    letter-spacing:8px;
+    min-height:60px;
+}
+
+button:disabled{
+    opacity:.3;
+    cursor:not-allowed;
+}
+
+#message{
+    min-height:50px;
+    font-size:30px;
+    font-weight:bold;
+    margin:20px 0;
+}
+/* ⭐ 星星動畫 */
+
+#starAnimation{
+
+    height:60px;
+
+    font-size:40px;
+
+    font-weight:bold;
+
+    color:gold;
+
+    text-align:center;
+
+    margin:10px 0;
+
+    animation:none;
+
+}
+
+@keyframes pop{
+
+    0%{
+
+        transform:scale(.5);
+
+        opacity:0;
+
+    }
+
+    50%{
+
+        transform:scale(1.4);
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+        opacity:0;
+
+    }
+
+}
+/* ===== 彩色字母按鈕 ===== */
+
+#letters button:nth-child(6n+1){
+    background:#ff7675;
+    color:white;
+}
+
+#letters button:nth-child(6n+2){
+    background:#74b9ff;
+    color:white;
+}
+
+#letters button:nth-child(6n+3){
+    background:#55efc4;
+    color:#222;
+}
+
+#letters button:nth-child(6n+4){
+    background:#ffeaa7;
+    color:#222;
+}
+
+#letters button:nth-child(6n+5){
+    background:#a29bfe;
+    color:white;
+}
+
+#letters button:nth-child(6n){
+    background:#fd79a8;
+    color:white;
+}
+
+#letters button{
+
+    transition:.25s;
+
+    cursor:pointer;
+
+    border:none;
+
+    box-shadow:0 5px 12px rgba(0,0,0,.25);
+
+}
+
+#letters button:hover{
+
+    transform:translateY(-5px) scale(1.08);
+
+}
+
+#letters button:active{
+
+    transform:scale(.95);
+
+}
+
+#letters button:disabled{
+
+    transform:none;
+
+    opacity:.35;
+
+}
+/* ===== 星星灑落 ===== */
+
+.star{
+
+    position:fixed;
+
+    font-size:35px;
+
+    pointer-events:none;
+
+    animation:flyStar 1.2s linear forwards;
+
+    z-index:9999;
+
+}
+
+@keyframes flyStar{
+
+    0%{
+
+        transform:translateY(0) scale(.5);
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:translateY(-220px)
+                  rotate(360deg)
+                  scale(1.8);
+
+        opacity:0;
+
+    }
+
+}
+/* ===== 成就 ===== */
+
+#achievement{
+
+    margin:20px 0;
+
+    font-size:26px;
+
+    font-weight:bold;
+
+    color:#ff9800;
+
+    min-height:40px;
+
+    transition:.3s;
+
+}
+/* ===== 成就動畫 ===== */
+
+#achievementPopup{
+
+    position:fixed;
+
+    top:50%;
+
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    background:#ffffff;
+
+    border-radius:20px;
+
+    padding:25px 40px;
+
+    font-size:36px;
+
+    font-weight:bold;
+
+    color:#ff9800;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+
+    display:none;
+
+    z-index:9999;
+
+    animation:achievementPop .8s;
+
+}
+
+/* ===== 成就動畫 ===== */
+
+#achievementPopup{
+
+    position:fixed;
+
+    top:50%;
+
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    background:#ffffff;
+
+    border-radius:20px;
+
+    padding:25px 40px;
+
+    font-size:36px;
+
+    font-weight:bold;
+
+    color:#ff9800;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+
+    display:none;
+
+    z-index:9999;
+
+    animation:achievementPop .8s;
+
+}
+
+@keyframes achievementPop{
+
+    0%{
+
+        transform:translate(-50%,-50%) scale(.5);
+
+        opacity:0;
+
+    }
+
+    50%{
+
+        transform:translate(-50%,-50%) scale(1.2);
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:translate(-50%,-50%) scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+/* ===== 聽力模式 ===== */
+
+.pictureButton{
+
+    border:none;
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:12px;
+
+    margin:10px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    box-shadow:0 6px 18px rgba(0,0,0,.25);
+
+}
+
+.pictureButton:hover{
+
+    transform:scale(1.08);
+
+}
+
+.pictureButton img{
+
+    border-radius:15px;
+
+}
+
+.restartButton{
+
+    font-size:26px;
+
+    padding:15px 35px;
+
+    border:none;
+
+    border-radius:15px;
+
+    cursor:pointer;
+
+    background:#4CAF50;
+
+    color:white;
+
+}
+
+.shopCard{
+
+background:white;
+
+padding:20px;
+
+margin:20px auto;
+
+max-width:400px;
+
+border-radius:20px;
+
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+
+}
+
+.shopCard button{
+
+margin-top:15px;
+
+width:180px;
+
+}
+
+/* ===================================== */
+/* 英文小勇士 Ultimate */
+/* 拼字挑戰 */
+/* ===================================== */
+
+body{
+
+    margin:0;
+
+    padding:30px;
+
+    font-family:"Microsoft JhengHei",sans-serif;
+
+    background:#f3f8ff;
+
+    text-align:center;
+
+}
+
+h1{
+
+    color:#2196F3;
+
+    margin-bottom:25px;
+
+}
+
+.topBar{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:18px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:20px;
+
+}
+
+.topBar div{
+
+    background:white;
+
+    padding:12px 20px;
+
+    border-radius:18px;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+
+}
+
+#achievement{
+
+    color:#ff9800;
+
+    font-size:28px;
+
+    min-height:40px;
+
+    margin:20px 0;
+
+}
+
+#wordImage{
+
+    width:260px;
+
+    height:260px;
+
+    object-fit:contain;
+
+    background:white;
+
+    border-radius:20px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.2);
+
+    padding:15px;
+
+}
+
+#playButton{
+
+    margin-top:20px;
+
+    font-size:24px;
+
+    padding:12px 30px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:#03A9F4;
+
+    color:white;
+
+    cursor:pointer;
+
+}
+
+#playButton:hover{
+
+    background:#0288D1;
+
+}
+
+#answer{
+
+    margin:30px 0;
+
+    font-size:48px;
+
+    color:#4CAF50;
+
+    letter-spacing:8px;
+
+    min-height:60px;
+
+}
+
+/* ===================================== */
+/* Ultimate 字母按鈕 */
+/* ===================================== */
+
+#letters{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:12px;
+
+    max-width:720px;
+
+    margin:30px auto;
+
+}
+
+#letters button{
+
+    width:70px;
+
+    height:70px;
+
+    border:none;
+
+    border-radius:18px;
+
+    font-size:34px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    box-shadow:0 6px 15px rgba(0,0,0,.25);
+
+}
+
+#letters button:hover{
+
+    transform:translateY(-5px) scale(1.08);
+
+}
+
+#letters button:active{
+
+    transform:scale(.95);
+
+}
+
+#letters button:disabled{
+
+    opacity:.35;
+
+    transform:none;
+
+    cursor:not-allowed;
+
+}
+
+/* 彩色字母 */
+
+#letters button:nth-child(6n+1){
+
+    background:#ff7675;
+
+    color:white;
+
+}
+
+#letters button:nth-child(6n+2){
+
+    background:#74b9ff;
+
+    color:white;
+
+}
+
+#letters button:nth-child(6n+3){
+
+    background:#55efc4;
+
+    color:#222;
+
+}
+
+#letters button:nth-child(6n+4){
+
+    background:#ffeaa7;
+
+    color:#222;
+
+}
+
+#letters button:nth-child(6n+5){
+
+    background:#a29bfe;
+
+    color:white;
+
+}
+
+#letters button:nth-child(6n){
+
+    background:#fd79a8;
+
+    color:white;
+
+}
+
+/* 共用按鈕 */
+
+button{
+
+    font-family:inherit;
+
+}
+
+button:not(#letters button){
+
+    padding:12px 28px;
+
+    font-size:22px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:#4CAF50;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+button:not(#letters button):hover{
+
+    transform:translateY(-3px);
+
+    background:#43A047;
+
+}
+
+/* 訊息 */
+
+#message{
+
+    min-height:70px;
+
+    font-size:30px;
+
+    font-weight:bold;
+
+    margin:25px 0;
+
+}
+
+/* 星星 */
+
+.star{
+
+    position:fixed;
+
+    pointer-events:none;
+
+    font-size:36px;
+
+    animation:flyStar 1.2s linear forwards;
+
+    z-index:9999;
+
+}
+
+@keyframes flyStar{
+
+    from{
+
+        opacity:1;
+
+        transform:
+        translateY(0)
+        scale(.5);
+
+    }
+
+    to{
+
+        opacity:0;
+
+        transform:
+        translateY(-220px)
+        rotate(360deg)
+        scale(1.8);
+
+    }
+
+}
+
+/* 成就視窗 */
+
+#achievementPopup{
+
+    position:fixed;
+
+    top:50%;
+
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    background:white;
+
+    padding:30px 45px;
+
+    border-radius:22px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.3);
+
+    font-size:34px;
+
+    font-weight:bold;
+
+    color:#ff9800;
+
+    display:none;
+
+    z-index:99999;
+
+}
+
+.restartButton{
+
+    margin-top:25px;
+
+    font-size:26px;
+
+}
