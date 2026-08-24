@@ -4,7 +4,8 @@
 // ======================================
 
 let currentWord = 0;
-let userAnswer = "";
+let userAnswer = [];
+let hintUsed = false;
 
 window.onload = function () {
 
@@ -23,8 +24,8 @@ function newWord(){
         Math.random() * words.length
     );
 
-    userAnswer = "";
-
+   userAnswer = [];
+hintUsed = false;
     document.getElementById("wordImage").src =
     words[currentWord].image;
 
@@ -66,13 +67,14 @@ function updateAnswer(){
     let html = "";
 
     const answer =
-    words[currentWord].english;
+        words[currentWord].english;
 
-    for(let i=0;i<answer.length;i++){
+    for(let i = 0; i < answer.length; i++){
 
         if(userAnswer[i]){
 
-            html += userAnswer[i] + " ";
+html +=
+    userAnswer[i].toLowerCase() + " ";
 
         }else{
 
@@ -81,9 +83,9 @@ function updateAnswer(){
         }
 
     }
-document.getElementById("answer").innerHTML =
-    
-    html;
+
+    document.getElementById("answer").innerHTML =
+        html;
 
 }
 
@@ -138,18 +140,55 @@ ${letter}
 
 function addLetter(letter,index){
 
-    userAnswer += letter;
+    const answer =
+        words[currentWord].english.toLowerCase();
+
+    // 找下一個還沒有填入的位置
+    let position = -1;
+
+    for(let i = 0; i < answer.length; i++){
+
+        if(!userAnswer[i]){
+
+            position = i;
+
+            break;
+
+        }
+
+    }
+
+    if(position === -1){
+
+        return;
+
+    }
+
+    userAnswer[position] =
+        letter.toLowerCase();
 
     document.getElementById(
-        "letter"+index
+        "letter" + index
     ).disabled = true;
 
     updateAnswer();
 
-    if(
-        userAnswer.length ===
-        words[currentWord].english.length
-    ){
+    // 全部填完
+    let complete = true;
+
+    for(let i = 0; i < answer.length; i++){
+
+        if(!userAnswer[i]){
+
+            complete = false;
+
+            break;
+
+        }
+
+    }
+
+    if(complete){
 
         setTimeout(function(){
 
@@ -192,7 +231,7 @@ function speakWord(){
 
 function clearAnswer(){
 
-    userAnswer = "";
+   userAnswer = [];
 
     updateAnswer();
 
@@ -208,10 +247,21 @@ function clearAnswer(){
 
 function checkAnswer(){
 
+
     const correct =
     words[currentWord].english.toLowerCase();
 
-    if(userAnswer.toLowerCase()===correct){
+  if(userAnswer.join("").toLowerCase() === correct){
+
+        let totalCorrect =
+        Number(localStorage.getItem("totalCorrect")) || 0;
+
+        totalCorrect++;
+
+        localStorage.setItem(
+            "totalCorrect",
+            totalCorrect
+        );
 
         removeWrongWord(correct);
 
@@ -233,6 +283,16 @@ function checkAnswer(){
         },1000);
 
     }else{
+
+        let totalWrong =
+        Number(localStorage.getItem("totalWrong")) || 0;
+
+        totalWrong++;
+
+        localStorage.setItem(
+            "totalWrong",
+            totalWrong
+        );
 
         saveWrongWord(correct);
 
@@ -264,6 +324,28 @@ function nextWord(){
 
     combo++;
 
+    // ==============================
+    // 最高 Combo
+    // ==============================
+
+    let highCombo =
+    Number(localStorage.getItem("highCombo")) || 0;
+
+    if(combo > highCombo){
+
+        highCombo = combo;
+
+        localStorage.setItem(
+            "highCombo",
+            highCombo
+        );
+
+    }
+
+    // ==============================
+    // Combo 成就
+    // ==============================
+
     if(combo === 5){
 
         unlockAchievement(
@@ -272,6 +354,10 @@ function nextWord(){
         );
 
     }
+
+    // ==============================
+    // Boss 獎勵
+    // ==============================
 
     if(isBoss){
 
@@ -292,6 +378,10 @@ function nextWord(){
 
     }
 
+    // ==============================
+    // 最高分
+    // ==============================
+
     if(score > highScore){
 
         highScore = score;
@@ -303,10 +393,18 @@ function nextWord(){
 
     }
 
+    // ==============================
+    // 儲存金幣
+    // ==============================
+
     localStorage.setItem(
         "coins",
         coins
     );
+
+    // ==============================
+    // 更新畫面
+    // ==============================
 
     document.getElementById("score").textContent =
     score;
@@ -316,6 +414,10 @@ function nextWord(){
 
     document.getElementById("coins").textContent =
     coins;
+
+    // ==============================
+    // 下一題
+    // ==============================
 
     newWord();
 
@@ -410,7 +512,7 @@ function startTimer(){
 
     clearInterval(timer);
 
-    time = isBoss ? 20 : 30;
+    time = isBoss ? 20 : 60;
 
     document.getElementById("timer").textContent =
     time;
@@ -619,55 +721,102 @@ function unlockAchievement(key, text){
 // 提示功能
 // ======================================
 
+// ======================================
+// Step 3-5
+// 💡 隨機提示一個正確字母
+// ======================================
+
 function hint(){
 
-    if(coins < 20){
-
-        alert("🪙 金幣不足！");
-
-        return;
-
-    }
-
     const answer =
-    words[currentWord].english.toLowerCase();
+        words[currentWord].english.toLowerCase();
 
-    if(userAnswer.length >= answer.length){
+    // 找出還沒有填入的位置
+    let availablePositions = [];
 
-        return;
+    for(let i = 0; i < answer.length; i++){
 
-    }
+        if(!userAnswer[i]){
 
-    coins -= 20;
-
-    localStorage.setItem(
-        "coins",
-        coins
-    );
-
-    document.getElementById("coins").textContent =
-    coins;
-
-    const letter =
-    answer[userAnswer.length];
-
-    const buttons =
-    document.querySelectorAll(
-        "#letters button"
-    );
-
-    buttons.forEach(function(btn){
-
-        if(
-            !btn.disabled &&
-            btn.textContent === letter
-        ){
-
-            btn.click();
+            availablePositions.push(i);
 
         }
 
-    });
+    }
+
+    if(availablePositions.length === 0){
+
+        return;
+
+    }
+
+    // 每題第一次提示免費
+    if(!hintUsed){
+
+        hintUsed = true;
+
+    }else{
+
+        // 第二次開始才扣金幣
+        if(coins < 20){
+
+            alert("🪙 金幣不足！");
+
+            return;
+
+        }
+
+        coins -= 20;
+
+        localStorage.setItem(
+            "coins",
+            coins
+        );
+
+        document.getElementById("coins").textContent =
+            coins;
+
+    }
+
+    // 隨機選一個還沒填的位置
+    const randomPosition =
+        availablePositions[
+            Math.floor(
+                Math.random() *
+                availablePositions.length
+            )
+        ];
+
+    const correctLetter =
+        answer[randomPosition];
+
+    // 直接填入正確字母
+    userAnswer[randomPosition] =
+        correctLetter;
+
+    // 找到相同的字母按鈕並停用
+    const buttons =
+        document.querySelectorAll(
+            "#letters button"
+        );
+
+    for(const btn of buttons){
+
+        if(
+            !btn.disabled &&
+            btn.textContent.toLowerCase() ===
+            correctLetter
+        ){
+
+            btn.disabled = true;
+
+            break;
+
+        }
+
+    }
+
+    updateAnswer();
 
 }
 
@@ -678,33 +827,47 @@ function hint(){
 
 function undoLetter(){
 
-    if(userAnswer.length===0){
+    // 找最後一個已填入的字母
+    let lastPosition = -1;
+
+    for(let i = userAnswer.length - 1; i >= 0; i--){
+
+        if(userAnswer[i]){
+
+            lastPosition = i;
+            break;
+
+        }
+
+    }
+
+    if(lastPosition === -1){
 
         return;
 
     }
 
     const lastLetter =
-    userAnswer[userAnswer.length-1];
+        userAnswer[lastPosition];
 
-    userAnswer =
-    userAnswer.slice(0,-1);
+    userAnswer[lastPosition] = null;
 
     updateAnswer();
 
     const buttons =
-    document.querySelectorAll(
-        "#letters button"
-    );
+        document.querySelectorAll(
+            "#letters button"
+        );
 
     for(const btn of buttons){
 
         if(
             btn.disabled &&
-            btn.textContent===lastLetter
+            btn.textContent.toLowerCase() ===
+            lastLetter.toLowerCase()
         ){
 
-            btn.disabled=false;
+            btn.disabled = false;
 
             break;
 
@@ -713,7 +876,6 @@ function undoLetter(){
     }
 
 }
-
 function goHome(){
 
     window.location.href = "index.html";

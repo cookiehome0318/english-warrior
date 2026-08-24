@@ -33,7 +33,9 @@ window.onload = function(){
     document.getElementById("achievement").textContent =
 "🏅 尚未獲得成就";
 
-    newQuestion();
+  newQuestion();
+updateAccuracy();
+updateLearningWrongCount();
 
 };
 
@@ -352,5 +354,52 @@ function showAchievementPopup(text){
         popup.style.display = "none";
 
     },2200);
+
+}
+// ======================================
+// Step 6-4
+// 最高 Combo
+// ======================================
+
+let highCombo =
+    Number(localStorage.getItem("highCombo")) || 0;
+
+const highComboElement =
+    document.createElement("h2");
+
+highComboElement.innerHTML =
+    "🔥 最高 Combo：<span>" +
+    highCombo +
+    "</span>";
+
+document
+    .querySelector("body")
+    .insertBefore(
+        highComboElement,
+        document.querySelector("button")
+    );
+
+    // ======================================
+// 第十段：學習中心錯題數量
+// ======================================
+
+function updateLearningWrongCount(){
+
+    let wrongWords =
+        JSON.parse(
+            localStorage.getItem("wrongWords")
+        ) || [];
+
+    const count =
+        document.getElementById(
+            "learningWrongCount"
+        );
+
+    if(count){
+
+        count.textContent =
+            wrongWords.length;
+
+    }
 
 }

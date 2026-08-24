@@ -12,11 +12,6 @@ let currentWord = null;
 
 let userAnswer = "";
 
-window.onload = function(){
-
-    loadWord();
-
-};
 
 function loadWord(){
 
@@ -304,16 +299,8 @@ function goHome(){
 // 啟動 Review Game
 // ======================================
 
+// 啟動錯題再練習
 window.onload = function(){
-
-    if(wrongWords.length===0){
-
-        document.getElementById("message").innerHTML =
-        "🎉 沒有需要複習的單字！";
-
-        return;
-
-    }
 
     loadWord();
 
