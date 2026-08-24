@@ -924,5 +924,124 @@ const words = [
             }
         ]
     }
-
-];
+,
+{
+    english: "lock",
+    chinese: "鎖",
+    partOfSpeech: "noun",
+    sentences: [
+        {
+            english: "this is a lock.",
+            chinese: "這是一把鎖。"
+        }
+    ]
+},
+{
+    english: "map",
+    chinese: "地圖",
+    partOfSpeech: "noun",
+    sentences: [
+        {
+            english: "this is a map.",
+            chinese: "這是一張地圖。"
+        }
+    ]
+},
+{
+    english: "nest",
+    chinese: "鳥巢",
+    partOfSpeech: "noun",
+    sentences: [
+        {
+            english: "this is a nest.",
+            chinese: "這是一個鳥巢。"
+        }
+    ]
+},
+{
+    english: "ox",
+    chinese: "牛",
+    partOfSpeech: "noun",
+    sentences: [
+        {
+            english: "this is an ox.",
+            chinese: "這是一頭牛。"
+        }
+    ]
+},
+{
+    english: "plant",
+    chinese: "植物",
+    partOfSpeech: "noun",
+    sentences: [
+        {
+            english: "this is a plant.",
+            chinese: "這是一株植物。"
+        }
+    ]
+},
+{
+    english: "happy",
+    chinese: "開心的",
+    partOfSpeech: "adjective",
+    sentences: [
+        {
+            english: "i am happy.",
+            chinese: "我很開心。"
+        }
+    ]
+},
+{
+    english: "sad",
+    chinese: "難過的",
+    partOfSpeech: "adjective",
+    sentences: [
+        {
+            english: "i am sad.",
+            chinese: "我很難過。"
+        }
+    ]
+},
+{
+    english: "angry",
+    chinese: "生氣的",
+    partOfSpeech: "adjective",
+    sentences: [
+        {
+            english: "i am angry.",
+            chinese: "我很生氣。"
+        }
+    ]
+},
+{
+    english: "tired",
+    chinese: "累的",
+    partOfSpeech: "adjective",
+    sentences: [
+        {
+            english: "i am tired.",
+            chinese: "我很累。"
+        }
+    ]
+},
+{
+    english: "bored",
+    chinese: "無聊的",
+    partOfSpeech: "adjective",
+    sentences: [
+        {
+            english: "i am bored.",
+            chinese: "我很無聊。"
+        }
+    ]
+},
+{
+    english: "excited",
+    chinese: "興奮的",
+    partOfSpeech: "adjective",
+    sentences: [
+        {
+            english: "i am excited.",
+            chinese: "我很興奮。"
+        }
+    ]
