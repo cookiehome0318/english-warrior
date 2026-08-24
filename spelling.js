@@ -4,8 +4,7 @@
 // ======================================
 
 let currentWord = 0;
-let userAnswer = [];
-let hintUsed = false;
+let userAnswer = "";
 
 window.onload = function () {
 
@@ -19,15 +18,39 @@ function newWord(){
 
     checkBoss();
 
-    currentWord =
-    Math.floor(
-        Math.random() * words.length
-    );
+    // 只挑選有圖片路徑的單字，避免沒有圖片的單字造成破圖
+    const imageWords = words.filter(function(word){
+        return word && word.image;
+    });
 
-   userAnswer = [];
-hintUsed = false;
-    document.getElementById("wordImage").src =
-    words[currentWord].image;
+    if(imageWords.length === 0){
+        console.error("沒有可用的圖片單字");
+        return;
+    }
+
+    // 找到原始 words 陣列中的索引
+    const selectedWord =
+    imageWords[Math.floor(Math.random() * imageWords.length)];
+
+    currentWord = words.indexOf(selectedWord);
+
+    userAnswer = "";
+
+    const wordImage = document.getElementById("wordImage");
+
+    wordImage.style.display = "block";
+    wordImage.alt = selectedWord.chinese || selectedWord.english || "圖片";
+
+    const imagePath =
+        selectedWord.image ||
+        ("images/" + selectedWord.english.toLowerCase() + ".png");
+
+    wordImage.onerror = function(){
+        console.warn("找不到圖片：", imagePath);
+        this.style.display = "none";
+    };
+
+    wordImage.src = imagePath;
 
     updateAnswer();
 
@@ -58,6 +81,7 @@ hintUsed = false;
 
 }
 
+
 // ======================================
 // Step 1-2
 // ======================================
@@ -67,14 +91,13 @@ function updateAnswer(){
     let html = "";
 
     const answer =
-        words[currentWord].english;
+    words[currentWord].english;
 
-    for(let i = 0; i < answer.length; i++){
+    for(let i=0;i<answer.length;i++){
 
         if(userAnswer[i]){
 
-html +=
-    userAnswer[i].toLowerCase() + " ";
+            html += userAnswer[i] + " ";
 
         }else{
 
@@ -85,9 +108,10 @@ html +=
     }
 
     document.getElementById("answer").innerHTML =
-        html;
+    html;
 
 }
+
 
 function createLetters(){
 
@@ -138,57 +162,21 @@ ${letter}
 
 }
 
+
 function addLetter(letter,index){
 
-    const answer =
-        words[currentWord].english.toLowerCase();
-
-    // 找下一個還沒有填入的位置
-    let position = -1;
-
-    for(let i = 0; i < answer.length; i++){
-
-        if(!userAnswer[i]){
-
-            position = i;
-
-            break;
-
-        }
-
-    }
-
-    if(position === -1){
-
-        return;
-
-    }
-
-    userAnswer[position] =
-        letter.toLowerCase();
+    userAnswer += letter;
 
     document.getElementById(
-        "letter" + index
+        "letter"+index
     ).disabled = true;
 
     updateAnswer();
 
-    // 全部填完
-    let complete = true;
-
-    for(let i = 0; i < answer.length; i++){
-
-        if(!userAnswer[i]){
-
-            complete = false;
-
-            break;
-
-        }
-
-    }
-
-    if(complete){
+    if(
+        userAnswer.length ===
+        words[currentWord].english.length
+    ){
 
         setTimeout(function(){
 
@@ -199,6 +187,7 @@ function addLetter(letter,index){
     }
 
 }
+
 
 // ======================================
 // Step 1-3
@@ -225,13 +214,14 @@ function speakWord(){
 
 }
 
+
 // ======================================
 // Step 1-4
 // ======================================
 
 function clearAnswer(){
 
-   userAnswer = [];
+    userAnswer = "";
 
     updateAnswer();
 
@@ -245,25 +235,13 @@ function clearAnswer(){
 
 }
 
-function checkAnswer(){
 
+function checkAnswer(){
 
     const correct =
     words[currentWord].english.toLowerCase();
 
-  if(userAnswer.join("").toLowerCase() === correct){
-
-        let totalCorrect =
-        Number(localStorage.getItem("totalCorrect")) || 0;
-
-        totalCorrect++;
-
-        localStorage.setItem(
-            "totalCorrect",
-            totalCorrect
-        );
-
-        removeWrongWord(correct);
+    if(userAnswer.toLowerCase()===correct){
 
         createStars();
 
@@ -284,16 +262,6 @@ function checkAnswer(){
 
     }else{
 
-        let totalWrong =
-        Number(localStorage.getItem("totalWrong")) || 0;
-
-        totalWrong++;
-
-        localStorage.setItem(
-            "totalWrong",
-            totalWrong
-        );
-
         saveWrongWord(correct);
 
         document.getElementById("message").innerHTML =
@@ -308,6 +276,7 @@ function checkAnswer(){
     }
 
 }
+
 
 // ======================================
 // Step 2-1
@@ -324,28 +293,6 @@ function nextWord(){
 
     combo++;
 
-    // ==============================
-    // 最高 Combo
-    // ==============================
-
-    let highCombo =
-    Number(localStorage.getItem("highCombo")) || 0;
-
-    if(combo > highCombo){
-
-        highCombo = combo;
-
-        localStorage.setItem(
-            "highCombo",
-            highCombo
-        );
-
-    }
-
-    // ==============================
-    // Combo 成就
-    // ==============================
-
     if(combo === 5){
 
         unlockAchievement(
@@ -354,10 +301,6 @@ function nextWord(){
         );
 
     }
-
-    // ==============================
-    // Boss 獎勵
-    // ==============================
 
     if(isBoss){
 
@@ -378,10 +321,6 @@ function nextWord(){
 
     }
 
-    // ==============================
-    // 最高分
-    // ==============================
-
     if(score > highScore){
 
         highScore = score;
@@ -393,18 +332,10 @@ function nextWord(){
 
     }
 
-    // ==============================
-    // 儲存金幣
-    // ==============================
-
     localStorage.setItem(
         "coins",
         coins
     );
-
-    // ==============================
-    // 更新畫面
-    // ==============================
 
     document.getElementById("score").textContent =
     score;
@@ -415,13 +346,10 @@ function nextWord(){
     document.getElementById("coins").textContent =
     coins;
 
-    // ==============================
-    // 下一題
-    // ==============================
-
     newWord();
 
 }
+
 
 function wrongAnswer(){
 
@@ -480,6 +408,7 @@ function gameOver(){
 
 }
 
+
 function restartGame(){
 
     score = 0;
@@ -499,7 +428,7 @@ function restartGame(){
 
 }
 
-// ======================================
+
 // Step 2-2
 // 倒數計時
 // ======================================
@@ -512,7 +441,7 @@ function startTimer(){
 
     clearInterval(timer);
 
-    time = isBoss ? 20 : 60;
+    time = isBoss ? 20 : 30;
 
     document.getElementById("timer").textContent =
     time;
@@ -550,13 +479,12 @@ function startTimer(){
 let coins =
 Number(localStorage.getItem("coins")) || 0;
 
-let combo = 0;
-
 let highScore =
 Number(localStorage.getItem("spellingHighScore")) || 0;
 
 document.getElementById("coins").textContent =
 coins;
+
 
 // ======================================
 // Step 2-4
@@ -574,6 +502,7 @@ level;
 
 document.getElementById("exp").textContent =
 exp;
+
 
 function addExp(value){
 
@@ -607,12 +536,19 @@ function addExp(value){
 
 }
 
+
 function levelUp(){
 
     const popup =
     document.getElementById(
         "achievementPopup"
     );
+
+    if(!popup){
+
+        return;
+
+    }
 
     popup.innerHTML =
 
@@ -632,6 +568,7 @@ function levelUp(){
 
 }
 
+
 // ======================================
 // Step 3-1
 // Boss Mode
@@ -639,11 +576,25 @@ function levelUp(){
 
 let isBoss = false;
 
+
 function checkBoss(){
 
-    isBoss = (score > 0 && score % 10 === 0);
+    isBoss = (
+        score > 0 &&
+        score % 10 === 0
+    );
 
 }
+
+
+// ======================================
+// Step 3-2
+// Combo
+// ======================================
+
+let combo = 0;
+
+
 // ======================================
 // Step 3-3
 // 星星特效
@@ -661,7 +612,8 @@ function createStars(){
         star.innerHTML = "⭐";
 
         star.style.left =
-        Math.random()*window.innerWidth + "px";
+        Math.random() *
+        window.innerWidth + "px";
 
         star.style.top =
         (window.innerHeight/2) + "px";
@@ -677,6 +629,8 @@ function createStars(){
     }
 
 }
+
+
 // ======================================
 // Step 3-4
 // 成就系統
@@ -685,6 +639,7 @@ function createStars(){
 let achievements = JSON.parse(
     localStorage.getItem("achievements")
 ) || {};
+
 
 function unlockAchievement(key, text){
 
@@ -698,239 +653,622 @@ function unlockAchievement(key, text){
     );
 
     const popup =
-    document.getElementById("achievementPopup");
+    document.getElementById(
+        "achievementPopup"
+    );
 
-    popup.innerHTML =
-    "🏆<br><br>" + text;
+    if(popup){
 
-    popup.style.display = "block";
+        popup.innerHTML =
+        "🏆<br><br>" + text;
 
-    document.getElementById("achievement").innerHTML =
-    "🏅 " + text;
+        popup.style.display = "block";
 
-    setTimeout(function(){
+        setTimeout(function(){
 
-        popup.style.display = "none";
+            popup.style.display = "none";
 
-    },2500);
-
-}
-
-// ======================================
-// Step 3-5
-// 提示功能
-// ======================================
-
-// ======================================
-// Step 3-5
-// 💡 隨機提示一個正確字母
-// ======================================
-
-function hint(){
-
-    const answer =
-        words[currentWord].english.toLowerCase();
-
-    // 找出還沒有填入的位置
-    let availablePositions = [];
-
-    for(let i = 0; i < answer.length; i++){
-
-        if(!userAnswer[i]){
-
-            availablePositions.push(i);
-
-        }
+        },2500);
 
     }
 
-    if(availablePositions.length === 0){
+    const achievement =
+    document.getElementById("achievement");
 
-        return;
+    if(achievement){
 
-    }
-
-    // 每題第一次提示免費
-    if(!hintUsed){
-
-        hintUsed = true;
-
-    }else{
-
-        // 第二次開始才扣金幣
-        if(coins < 20){
-
-            alert("🪙 金幣不足！");
-
-            return;
-
-        }
-
-        coins -= 20;
-
-        localStorage.setItem(
-            "coins",
-            coins
-        );
-
-        document.getElementById("coins").textContent =
-            coins;
-
-    }
-
-    // 隨機選一個還沒填的位置
-    const randomPosition =
-        availablePositions[
-            Math.floor(
-                Math.random() *
-                availablePositions.length
-            )
-        ];
-
-    const correctLetter =
-        answer[randomPosition];
-
-    // 直接填入正確字母
-    userAnswer[randomPosition] =
-        correctLetter;
-
-    // 找到相同的字母按鈕並停用
-    const buttons =
-        document.querySelectorAll(
-            "#letters button"
-        );
-
-    for(const btn of buttons){
-
-        if(
-            !btn.disabled &&
-            btn.textContent.toLowerCase() ===
-            correctLetter
-        ){
-
-            btn.disabled = true;
-
-            break;
-
-        }
-
-    }
-
-    updateAnswer();
-
-}
-
-// ======================================
-// Step 3-6
-// 返回上一個字母
-// ======================================
-
-function undoLetter(){
-
-    // 找最後一個已填入的字母
-    let lastPosition = -1;
-
-    for(let i = userAnswer.length - 1; i >= 0; i--){
-
-        if(userAnswer[i]){
-
-            lastPosition = i;
-            break;
-
-        }
-
-    }
-
-    if(lastPosition === -1){
-
-        return;
-
-    }
-
-    const lastLetter =
-        userAnswer[lastPosition];
-
-    userAnswer[lastPosition] = null;
-
-    updateAnswer();
-
-    const buttons =
-        document.querySelectorAll(
-            "#letters button"
-        );
-
-    for(const btn of buttons){
-
-        if(
-            btn.disabled &&
-            btn.textContent.toLowerCase() ===
-            lastLetter.toLowerCase()
-        ){
-
-            btn.disabled = false;
-
-            break;
-
-        }
+        achievement.innerHTML =
+        "🏅 " + text;
 
     }
 
 }
-function goHome(){
 
-    window.location.href = "index.html";
 
-}
 // ======================================
-// Review System
+// Step 4-1
+// 錯題紀錄
 // ======================================
 
-let wrongWords = JSON.parse(
-    localStorage.getItem("wrongWords")
+let wrongWords =
+JSON.parse(
+    localStorage.getItem("spellingWrongWords")
 ) || [];
 
-function saveWrongWord(word){
 
-    word = word.toLowerCase();
+function saveWrongWord(word){
 
     if(!wrongWords.includes(word)){
 
         wrongWords.push(word);
 
         localStorage.setItem(
-
-            "wrongWords",
-
+            "spellingWrongWords",
             JSON.stringify(wrongWords)
-
         );
 
     }
 
 }
 
+
 // ======================================
-// Review System 2
-// 答對後移除錯題
+// Step 4-2
+// 提示功能
 // ======================================
 
-function removeWrongWord(word){
+function showHint(){
 
-    word = word.toLowerCase();
+    const word =
+    words[currentWord].english;
 
-    wrongWords =
-    wrongWords.filter(function(item){
+    if(!word) return;
 
-        return item !== word;
+    const firstLetter =
+    word.charAt(0);
+
+    const message =
+    document.getElementById("message");
+
+    if(!message){
+
+        return;
+
+    }
+
+    message.innerHTML =
+
+    "💡 提示：第一個字母是 <strong>" +
+    firstLetter +
+    "</strong>";
+
+    message.style.color =
+    "#2196f3";
+
+}
+
+
+// ======================================
+// Step 4-3
+// 再聽一次發音
+// ======================================
+
+function repeatSound(){
+
+    speakWord();
+
+}
+
+
+// ======================================
+// Step 4-4
+// 返回上一個字母
+// ======================================
+
+function removeLetter(){
+
+    if(userAnswer.length === 0){
+
+        return;
+
+    }
+
+    userAnswer =
+    userAnswer.slice(0,-1);
+
+    document
+    .querySelectorAll("#letters button")
+    .forEach(function(btn){
+
+        btn.disabled = false;
 
     });
 
-    localStorage.setItem(
-
-        "wrongWords",
-
-        JSON.stringify(wrongWords)
-
-    );
+    updateAnswer();
 
 }
+
+
+// ======================================
+// Step 4-5
+// 鍵盤輸入
+// ======================================
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        const key =
+        event.key.toLowerCase();
+
+        if(
+            key.length === 1 &&
+            key >= "a" &&
+            key <= "z"
+        ){
+
+            const buttons =
+            document.querySelectorAll(
+                "#letters button"
+            );
+
+            for(let i=0;i<buttons.length;i++){
+
+                const button =
+                buttons[i];
+
+                if(
+                    !button.disabled &&
+                    button.textContent
+                    .trim()
+                    .toLowerCase() === key
+                ){
+
+                    button.click();
+
+                    break;
+
+                }
+
+            }
+
+        }
+
+        if(event.key === "Backspace"){
+
+            removeLetter();
+
+        }
+
+        if(event.key === "Enter"){
+
+            if(
+                userAnswer.length ===
+                words[currentWord].english.length
+            ){
+
+                checkAnswer();
+
+            }
+
+        }
+
+    }
+);
+
+// ======================================
+// Step 4-6
+// 防止圖片破圖
+// ======================================
+
+function setWordImage(){
+
+    const image =
+    document.getElementById("wordImage");
+
+    if(!image) return;
+
+    const word =
+    words[currentWord];
+
+    if(!word){
+
+        image.style.display =
+        "none";
+
+        return;
+
+    }
+
+    let imagePath =
+    word.image;
+
+    if(!imagePath){
+
+        imagePath =
+        "images/" +
+        word.english.toLowerCase() +
+        ".png";
+
+    }
+
+    image.onerror = function(){
+
+        console.log(
+            "找不到圖片：",
+            imagePath
+        );
+
+        this.style.display =
+        "none";
+
+    };
+
+    image.onload = function(){
+
+        this.style.display =
+        "block";
+
+    };
+
+    image.src =
+    imagePath;
+
+}
+
+
+// ======================================
+// Step 4-7
+// 更新遊戲資訊
+// ======================================
+
+function updateGameInfo(){
+
+    const scoreElement =
+    document.getElementById("score");
+
+    const lifeElement =
+    document.getElementById("life");
+
+    const comboElement =
+    document.getElementById("combo");
+
+    const coinsElement =
+    document.getElementById("coins");
+
+    const levelElement =
+    document.getElementById("level");
+
+    const expElement =
+    document.getElementById("exp");
+
+    const highScoreElement =
+    document.getElementById("highScore");
+
+
+    if(scoreElement){
+
+        scoreElement.textContent =
+        score;
+
+    }
+
+
+    if(lifeElement){
+
+        lifeElement.textContent =
+        life;
+
+    }
+
+
+    if(comboElement){
+
+        comboElement.textContent =
+        "🔥 Combo x" + combo;
+
+    }
+
+
+    if(coinsElement){
+
+        coinsElement.textContent =
+        coins;
+
+    }
+
+
+    if(levelElement){
+
+        levelElement.textContent =
+        level;
+
+    }
+
+
+    if(expElement){
+
+        expElement.textContent =
+        exp;
+
+    }
+
+
+    if(highScoreElement){
+
+        highScoreElement.textContent =
+        highScore;
+
+    }
+
+}
+
+
+// ======================================
+// 重新開始遊戲
+// ======================================
+
+function resetSpellingGame(){
+
+    score = 0;
+
+    life = 3;
+
+    combo = 0;
+
+    userAnswer = "";
+
+    updateGameInfo();
+
+    newWord();
+
+}
+
+
+// ======================================
+// 安全初始化
+// ======================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        updateGameInfo();
+
+    }
+);
+
+
+// ======================================
+// 確保圖片在每次換題時正確載入
+// ======================================
+
+const originalNewWord =
+newWord;
+
+newWord = function(){
+
+    originalNewWord();
+
+    setTimeout(function(){
+
+        setWordImage();
+
+    },50);
+
+};
+
+
+// ======================================
+// 頁面離開時停止計時
+// ======================================
+
+window.addEventListener(
+    "beforeunload",
+    function(){
+
+        clearInterval(timer);
+
+    }
+);
+
+// ======================================
+// 第 4 段
+// 最後初始化與錯誤保護
+// ======================================
+
+// 確保圖片元素存在
+function ensureImageElement(){
+
+    const image =
+    document.getElementById("wordImage");
+
+    if(!image){
+
+        console.warn(
+            "找不到 wordImage 圖片元素"
+        );
+
+        return false;
+
+    }
+
+    return true;
+
+}
+
+
+// ======================================
+// 圖片載入測試
+// ======================================
+
+function checkCurrentImage(){
+
+    if(!ensureImageElement()){
+
+        return;
+
+    }
+
+    const image =
+    document.getElementById("wordImage");
+
+    const word =
+    words[currentWord];
+
+    if(!word){
+
+        image.style.display = "none";
+
+        return;
+
+    }
+
+    let imagePath =
+    word.image;
+
+    if(!imagePath){
+
+        imagePath =
+        "images/" +
+        word.english.toLowerCase() +
+        ".png";
+
+    }
+
+    image.alt =
+    word.chinese || word.english;
+
+    image.onerror = function(){
+
+        console.warn(
+            "圖片不存在： " + imagePath
+        );
+
+        this.style.display =
+        "none";
+
+    };
+
+    image.onload = function(){
+
+        this.style.display =
+        "block";
+
+    };
+
+    image.src =
+    imagePath;
+
+}
+
+
+// ======================================
+// 防止瀏覽器快取舊圖片
+// ======================================
+
+function refreshWordImage(){
+
+    if(!ensureImageElement()){
+
+        return;
+
+    }
+
+    const image =
+    document.getElementById("wordImage");
+
+    const word =
+    words[currentWord];
+
+    if(!word){
+
+        return;
+
+    }
+
+    let imagePath =
+    word.image;
+
+    if(!imagePath){
+
+        imagePath =
+        "images/" +
+        word.english.toLowerCase() +
+        ".png";
+
+    }
+
+    image.onerror = function(){
+
+        this.style.display =
+        "none";
+
+    };
+
+    image.onload = function(){
+
+        this.style.display =
+        "block";
+
+    };
+
+    image.src =
+    imagePath;
+}
+
+
+// ======================================
+// 頁面完成後再次確認圖片
+// ======================================
+
+window.addEventListener(
+    "load",
+    function(){
+
+        setTimeout(function(){
+
+            checkCurrentImage();
+
+        },100);
+
+    }
+);
+
+
+// ======================================
+// 圖片切換時再次確認
+// ======================================
+
+setInterval(function(){
+
+    if(
+        typeof currentWord !== "undefined" &&
+        typeof words !== "undefined"
+    ){
+
+        const image =
+        document.getElementById("wordImage");
+
+        if(image){
+
+            if(
+                image.style.display !== "none" &&
+                image.complete &&
+                image.naturalWidth === 0
+            ){
+
+                refreshWordImage();
+
+            }
+
+        }
+
+    }
+
+},1000);
+
+
+// ======================================
+// 完成
+// ======================================

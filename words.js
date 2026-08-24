@@ -175,7 +175,7 @@ const words = [
         ]
     },
 
-        {
+    {
         english: "marker",
         chinese: "麥克筆",
         image: "images/marker.png",
@@ -300,7 +300,7 @@ const words = [
         ]
     },
 
-        {
+    {
         english: "red",
         chinese: "紅色",
         image: "images/red.png",
@@ -450,7 +450,7 @@ const words = [
         ]
     },
 
-        {
+    {
         english: "black",
         chinese: "黑色",
         image: "images/black.png",
@@ -619,8 +619,8 @@ const words = [
                 chinese: "我有一份禮物。"
             },
             {
-                english: "the gift is big.",
-                chinese: "這份禮物很大。"
+                english: "the gift is for you.",
+                chinese: "這份禮物是給你的。"
             }
         ]
     },
@@ -706,342 +706,873 @@ const words = [
         image: "images/kid.png",
         partOfSpeech: "noun",
 
-        sentence: "the kid is happy.",
-        sentenceChinese: "這個小孩很開心。",
+        sentence: "this is a kid.",
+        sentenceChinese: "這是一個小孩。",
 
         sentences: [
+            {
+                english: "this is a kid.",
+                chinese: "這是一個小孩。"
+            },
             {
                 english: "the kid is happy.",
                 chinese: "這個小孩很開心。"
             },
             {
-                english: "the kid is running.",
-                chinese: "這個小孩正在跑步。"
-            },
-            {
-                english: "the kid is playing.",
-                chinese: "這個小孩正在玩。"
+                english: "i see a kid.",
+                chinese: "我看到一個小孩。"
             }
         ]
     },
 
     {
-        english: "run",
-        chinese: "跑",
-        image: "images/run.png",
-        partOfSpeech: "verb",
+        english: "lock",
+        chinese: "鎖",
+        image: "images/lock.png",
+        partOfSpeech: "noun",
 
-        sentence: "i can run.",
-        sentenceChinese: "我會跑步。",
+        sentence: "this is a lock.",
+        sentenceChinese: "這是一把鎖。",
 
         sentences: [
             {
-                english: "i can run.",
-                chinese: "我會跑步。"
+                english: "this is a lock.",
+                chinese: "這是一把鎖。"
             },
             {
-                english: "the kid can run.",
-                chinese: "這個小孩會跑步。"
+                english: "the door has a lock.",
+                chinese: "門上有一把鎖。"
             },
             {
-                english: "i run every day.",
-                chinese: "我每天跑步。"
+                english: "i see a lock.",
+                chinese: "我看到一把鎖。"
             }
         ]
     },
 
     {
-        english: "play",
-        chinese: "玩",
-        image: "images/play.png",
-        partOfSpeech: "verb",
+        english: "map",
+        chinese: "地圖",
+        image: "images/map.png",
+        partOfSpeech: "noun",
 
-        sentence: "i like to play.",
-        sentenceChinese: "我喜歡玩。",
+        sentence: "this is a map.",
+        sentenceChinese: "這是一張地圖。",
 
         sentences: [
             {
-                english: "i like to play.",
-                chinese: "我喜歡玩。"
+                english: "this is a map.",
+                chinese: "這是一張地圖。"
             },
             {
-                english: "the kid can play.",
-                chinese: "這個小孩會玩。"
+                english: "i have a map.",
+                chinese: "我有一張地圖。"
             },
             {
-                english: "we play together.",
-                chinese: "我們一起玩。"
+                english: "the map is on the desk.",
+                chinese: "地圖在桌子上。"
             }
         ]
     },
 
     {
-        english: "eat",
-        chinese: "吃",
-        image: "images/eat.png",
-        partOfSpeech: "verb",
+        english: "nest",
+        chinese: "鳥巢",
+        image: "images/nest.png",
+        partOfSpeech: "noun",
 
-        sentence: "i like to eat.",
-        sentenceChinese: "我喜歡吃東西。",
+        sentence: "this is a nest.",
+        sentenceChinese: "這是一個鳥巢。",
 
         sentences: [
             {
-                english: "i like to eat.",
-                chinese: "我喜歡吃東西。"
+                english: "this is a nest.",
+                chinese: "這是一個鳥巢。"
             },
             {
-                english: "i eat an apple.",
-                chinese: "我吃一顆蘋果。"
+                english: "the bird has a nest.",
+                chinese: "鳥有一個鳥巢。"
             },
             {
-                english: "the kid can eat.",
-                chinese: "這個小孩會吃東西。"
+                english: "the nest is small.",
+                chinese: "鳥巢很小。"
             }
         ]
     },
 
     {
-        english: "read",
-        chinese: "閱讀",
-        image: "images/read.png",
-        partOfSpeech: "verb",
+        english: "ox",
+        chinese: "牛",
+        image: "images/ox.png",
+        partOfSpeech: "noun",
 
-        sentence: "i like to read.",
-        sentenceChinese: "我喜歡閱讀。",
+        sentence: "this is an ox.",
+        sentenceChinese: "這是一頭牛。",
 
         sentences: [
             {
-                english: "i like to read.",
-                chinese: "我喜歡閱讀。"
+                english: "this is an ox.",
+                chinese: "這是一頭牛。"
             },
             {
-                english: "i read a book.",
-                chinese: "我讀一本書。"
+                english: "the ox is big.",
+                chinese: "這頭牛很大。"
             },
             {
-                english: "the kid can read.",
-                chinese: "這個小孩會閱讀。"
+                english: "i see an ox.",
+                chinese: "我看到一頭牛。"
+            }
+        ]
+    },
+
+    {
+        english: "plant",
+        chinese: "植物",
+        image: "images/plant.png",
+        partOfSpeech: "noun",
+
+        sentence: "this is a plant.",
+        sentenceChinese: "這是一株植物。",
+
+        sentences: [
+            {
+                english: "this is a plant.",
+                chinese: "這是一株植物。"
+            },
+            {
+                english: "the plant is green.",
+                chinese: "這株植物是綠色的。"
+            },
+            {
+                english: "i see a plant.",
+                chinese: "我看到一株植物。"
+            }
+        ]
+    },
+
+    {
+        english: "happy",
+        chinese: "開心的",
+        image: "images/happy.png",
+        partOfSpeech: "adjective",
+
+        sentence: "i am happy.",
+        sentenceChinese: "我很開心。",
+
+        sentences: [
+            {
+                english: "i am happy.",
+                chinese: "我很開心。"
+            },
+            {
+                english: "she is happy.",
+                chinese: "她很開心。"
+            },
+            {
+                english: "the kid is happy.",
+                chinese: "這個小孩很開心。"
+            }
+        ]
+    },
+
+    {
+        english: "sad",
+        chinese: "難過的",
+        image: "images/sad.png",
+        partOfSpeech: "adjective",
+
+        sentence: "i am sad.",
+        sentenceChinese: "我很難過。",
+
+        sentences: [
+            {
+                english: "i am sad.",
+                chinese: "我很難過。"
+            },
+            {
+                english: "she is sad.",
+                chinese: "她很難過。"
+            },
+            {
+                english: "the kid is sad.",
+                chinese: "這個小孩很難過。"
+            }
+        ]
+    },
+
+    {
+        english: "angry",
+        chinese: "生氣的",
+        image: "images/angry.png",
+        partOfSpeech: "adjective",
+
+        sentence: "i am angry.",
+        sentenceChinese: "我很生氣。",
+
+        sentences: [
+            {
+                english: "i am angry.",
+                chinese: "我很生氣。"
+            },
+            {
+                english: "he is angry.",
+                chinese: "他很生氣。"
+            },
+            {
+                english: "the man is angry.",
+                chinese: "那個男人很生氣。"
+            }
+        ]
+    },
+
+    {
+        english: "tired",
+        chinese: "累的",
+        image: "images/tired.png",
+        partOfSpeech: "adjective",
+
+        sentence: "i am tired.",
+        sentenceChinese: "我很累。",
+
+        sentences: [
+            {
+                english: "i am tired.",
+                chinese: "我很累。"
+            },
+            {
+                english: "she is tired.",
+                chinese: "她很累。"
+            },
+            {
+                english: "the kid is tired.",
+                chinese: "這個小孩很累。"
+            }
+        ]
+    },
+
+    {
+        english: "bored",
+        chinese: "無聊的",
+        image: "images/bored.png",
+        partOfSpeech: "adjective",
+
+        sentence: "i am bored.",
+        sentenceChinese: "我很無聊。",
+
+        sentences: [
+            {
+                english: "i am bored.",
+                chinese: "我很無聊。"
+            },
+            {
+                english: "he is bored.",
+                chinese: "他很無聊。"
+            },
+            {
+                english: "the kid is bored.",
+                chinese: "這個小孩很無聊。"
+            }
+        ]
+    },
+
+    {
+        english: "excited",
+        chinese: "興奮的",
+        image: "images/excited.png",
+        partOfSpeech: "adjective",
+
+        sentence: "i am excited.",
+        sentenceChinese: "我很興奮。",
+
+        sentences: [
+            {
+                english: "i am excited.",
+                chinese: "我很興奮。"
+            },
+            {
+                english: "she is excited.",
+                chinese: "她很興奮。"
+            },
+            {
+                english: "the kid is excited.",
+                chinese: "這個小孩很興奮。"
             }
         ]
     },
 
         {
-        english: "quickly",
-        chinese: "快速地",
-        image: "images/quickly.png",
-        partOfSpeech: "adverb",
+        english: "big",
+        chinese: "大的",
+        image: "images/big.png",
+        partOfSpeech: "adjective",
 
-        sentence: "i run quickly.",
-        sentenceChinese: "我快速地跑。",
+        sentence: "it is big.",
+        sentenceChinese: "它很大。",
 
         sentences: [
             {
-                english: "i run quickly.",
-                chinese: "我快速地跑。"
+                english: "it is big.",
+                chinese: "它很大。"
             },
             {
-                english: "the kid runs quickly.",
-                chinese: "這個小孩跑得很快。"
+                english: "the dog is big.",
+                chinese: "這隻狗很大。"
             },
             {
-                english: "he runs quickly.",
-                chinese: "他跑得很快。"
+                english: "the box is big.",
+                chinese: "這個盒子很大。"
             }
         ]
     },
 
     {
-        english: "slowly",
-        chinese: "慢慢地",
-        image: "images/slowly.png",
-        partOfSpeech: "adverb",
+        english: "small",
+        chinese: "小的",
+        image: "images/small.png",
+        partOfSpeech: "adjective",
 
-        sentence: "i walk slowly.",
-        sentenceChinese: "我慢慢地走。",
+        sentence: "it is small.",
+        sentenceChinese: "它很小。",
 
         sentences: [
             {
-                english: "i walk slowly.",
-                chinese: "我慢慢地走。"
+                english: "it is small.",
+                chinese: "它很小。"
             },
             {
-                english: "the kid walks slowly.",
-                chinese: "這個小孩慢慢地走。"
+                english: "the dog is small.",
+                chinese: "這隻狗很小。"
             },
             {
-                english: "he walks slowly.",
-                chinese: "他慢慢地走。"
+                english: "the box is small.",
+                chinese: "這個盒子很小。"
             }
         ]
     },
 
     {
-        english: "happily",
-        chinese: "開心地",
-        image: "images/happily.png",
-        partOfSpeech: "adverb",
+        english: "long",
+        chinese: "長的",
+        image: "images/long.png",
+        partOfSpeech: "adjective",
 
-        sentence: "i play happily.",
-        sentenceChinese: "我開心地玩。",
+        sentence: "it is long.",
+        sentenceChinese: "它很長。",
 
         sentences: [
             {
-                english: "i play happily.",
-                chinese: "我開心地玩。"
+                english: "it is long.",
+                chinese: "它很長。"
             },
             {
-                english: "the kid plays happily.",
-                chinese: "這個小孩開心地玩。"
+                english: "the ruler is long.",
+                chinese: "這把尺很長。"
             },
             {
-                english: "we play happily.",
-                chinese: "我們開心地玩。"
+                english: "my hair is long.",
+                chinese: "我的頭髮很長。"
             }
         ]
     },
 
     {
-        english: "quietly",
-        chinese: "安靜地",
-        image: "images/quietly.png",
-        partOfSpeech: "adverb",
+        english: "short",
+        chinese: "短的",
+        image: "images/short.png",
+        partOfSpeech: "adjective",
 
-        sentence: "i read quietly.",
-        sentenceChinese: "我安靜地閱讀。",
+        sentence: "it is short.",
+        sentenceChinese: "它很短。",
 
         sentences: [
             {
-                english: "i read quietly.",
-                chinese: "我安靜地閱讀。"
+                english: "it is short.",
+                chinese: "它很短。"
             },
             {
-                english: "the kid reads quietly.",
-                chinese: "這個小孩安靜地閱讀。"
+                english: "the ruler is short.",
+                chinese: "這把尺很短。"
             },
             {
-                english: "we read quietly.",
-                chinese: "我們安靜地閱讀。"
+                english: "my hair is short.",
+                chinese: "我的頭髮很短。"
+            }
+        ]
+    },
+
+    {
+        english: "fast",
+        chinese: "快的",
+        image: "images/fast.png",
+        partOfSpeech: "adjective",
+
+        sentence: "it is fast.",
+        sentenceChinese: "它很快。",
+
+        sentences: [
+            {
+                english: "it is fast.",
+                chinese: "它很快。"
+            },
+            {
+                english: "the car is fast.",
+                chinese: "這台車很快。"
+            },
+            {
+                english: "the jet is fast.",
+                chinese: "這架噴射機很快。"
+            }
+        ]
+    },
+
+    {
+        english: "slow",
+        chinese: "慢的",
+        image: "images/slow.png",
+        partOfSpeech: "adjective",
+
+        sentence: "it is slow.",
+        sentenceChinese: "它很慢。",
+
+        sentences: [
+            {
+                english: "it is slow.",
+                chinese: "它很慢。"
+            },
+            {
+                english: "the turtle is slow.",
+                chinese: "烏龜很慢。"
+            },
+            {
+                english: "the car is slow.",
+                chinese: "這台車很慢。"
+            }
+        ]
+    },
+
+    {
+        english: "hot",
+        chinese: "熱的",
+        image: "images/hot.png",
+        partOfSpeech: "adjective",
+
+        sentence: "it is hot.",
+        sentenceChinese: "它很熱。",
+
+        sentences: [
+            {
+                english: "it is hot.",
+                chinese: "它很熱。"
+            },
+            {
+                english: "the water is hot.",
+                chinese: "水很熱。"
+            },
+            {
+                english: "today is hot.",
+                chinese: "今天很熱。"
+            }
+        ]
+    },
+
+    {
+        english: "cold",
+        chinese: "冷的",
+        image: "images/cold.png",
+        partOfSpeech: "adjective",
+
+        sentence: "it is cold.",
+        sentenceChinese: "它很冷。",
+
+        sentences: [
+            {
+                english: "it is cold.",
+                chinese: "它很冷。"
+            },
+            {
+                english: "the water is cold.",
+                chinese: "水很冷。"
+            },
+            {
+                english: "today is cold.",
+                chinese: "今天很冷。"
+            }
+        ]
+    },
+
+    {
+        english: "clean",
+        chinese: "乾淨的",
+        image: "images/clean.png",
+        partOfSpeech: "adjective",
+
+        sentence: "it is clean.",
+        sentenceChinese: "它很乾淨。",
+
+        sentences: [
+            {
+                english: "it is clean.",
+                chinese: "它很乾淨。"
+            },
+            {
+                english: "my room is clean.",
+                chinese: "我的房間很乾淨。"
+            },
+            {
+                english: "the desk is clean.",
+                chinese: "桌子很乾淨。"
+            }
+        ]
+    },
+
+    {
+        english: "dirty",
+        chinese: "髒的",
+        image: "images/dirty.png",
+        partOfSpeech: "adjective",
+
+        sentence: "it is dirty.",
+        sentenceChinese: "它很髒。",
+
+        sentences: [
+            {
+                english: "it is dirty.",
+                chinese: "它很髒。"
+            },
+            {
+                english: "my shoes are dirty.",
+                chinese: "我的鞋子很髒。"
+            },
+            {
+                english: "the desk is dirty.",
+                chinese: "桌子很髒。"
+            }
+        ]
+    },
+
+    {
+        english: "new",
+        chinese: "新的",
+        image: "images/new.png",
+        partOfSpeech: "adjective",
+
+        sentence: "it is new.",
+        sentenceChinese: "它是新的。",
+
+        sentences: [
+            {
+                english: "it is new.",
+                chinese: "它是新的。"
+            },
+            {
+                english: "my book is new.",
+                chinese: "我的書是新的。"
+            },
+            {
+                english: "this is my new bag.",
+                chinese: "這是我的新包包。"
+            }
+        ]
+    },
+
+    {
+        english: "old",
+        chinese: "舊的",
+        image: "images/old.png",
+        partOfSpeech: "adjective",
+
+        sentence: "it is old.",
+        sentenceChinese: "它是舊的。",
+
+        sentences: [
+            {
+                english: "it is old.",
+                chinese: "它是舊的。"
+            },
+            {
+                english: "my book is old.",
+                chinese: "我的書是舊的。"
+            },
+            {
+                english: "this is an old house.",
+                chinese: "這是一間老房子。"
+            }
+        ]
+    },
+
+    {
+        english: "good",
+        chinese: "好的",
+        image: "images/good.png",
+        partOfSpeech: "adjective",
+
+        sentence: "it is good.",
+        sentenceChinese: "它很好。",
+
+        sentences: [
+            {
+                english: "it is good.",
+                chinese: "它很好。"
+            },
+            {
+                english: "this is good.",
+                chinese: "這很好。"
+            },
+            {
+                english: "you are good.",
+                chinese: "你很棒。"
+            }
+        ]
+    },
+
+    {
+        english: "bad",
+        chinese: "不好的",
+        image: "images/bad.png",
+        partOfSpeech: "adjective",
+
+        sentence: "it is bad.",
+        sentenceChinese: "它不好。",
+
+        sentences: [
+            {
+                english: "it is bad.",
+                chinese: "它不好。"
+            },
+            {
+                english: "the food is bad.",
+                chinese: "食物不好。"
+            },
+            {
+                english: "this is bad.",
+                chinese: "這不好。"
+            }
+        ]
+    },
+
+    {
+        english: "beautiful",
+        chinese: "漂亮的",
+        image: "images/beautiful.png",
+        partOfSpeech: "adjective",
+
+        sentence: "it is beautiful.",
+        sentenceChinese: "它很漂亮。",
+
+        sentences: [
+            {
+                english: "it is beautiful.",
+                chinese: "它很漂亮。"
+            },
+            {
+                english: "the flower is beautiful.",
+                chinese: "這朵花很漂亮。"
+            },
+            {
+                english: "the girl is beautiful.",
+                chinese: "這個女孩很漂亮。"
+            }
+        ]
+    },
+
+    {
+        english: "cute",
+        chinese: "可愛的",
+        image: "images/cute.png",
+        partOfSpeech: "adjective",
+
+        sentence: "it is cute.",
+        sentenceChinese: "它很可愛。",
+
+        sentences: [
+            {
+                english: "it is cute.",
+                chinese: "它很可愛。"
+            },
+            {
+                english: "the dog is cute.",
+                chinese: "這隻狗很可愛。"
+            },
+            {
+                english: "the kid is cute.",
+                chinese: "這個小孩很可愛。"
+            }
+        ]
+    },
+
+    {
+        english: "strong",
+        chinese: "強壯的",
+        image: "images/strong.png",
+        partOfSpeech: "adjective",
+
+        sentence: "he is strong.",
+        sentenceChinese: "他很強壯。",
+
+        sentences: [
+            {
+                english: "he is strong.",
+                chinese: "他很強壯。"
+            },
+            {
+                english: "the man is strong.",
+                chinese: "那個男人很強壯。"
+            },
+            {
+                english: "the boy is strong.",
+                chinese: "這個男孩很強壯。"
+            }
+        ]
+    },
+
+    {
+        english: "weak",
+        chinese: "虛弱的",
+        image: "images/weak.png",
+        partOfSpeech: "adjective",
+
+        sentence: "he is weak.",
+        sentenceChinese: "他很虛弱。",
+
+        sentences: [
+            {
+                english: "he is weak.",
+                chinese: "他很虛弱。"
+            },
+            {
+                english: "the boy is weak.",
+                chinese: "這個男孩很虛弱。"
+            },
+            {
+                english: "i feel weak.",
+                chinese: "我覺得很虛弱。"
+            }
+        ]
+    },
+
+    {
+        english: "hungry",
+        chinese: "餓的",
+        image: "images/hungry.png",
+        partOfSpeech: "adjective",
+
+        sentence: "i am hungry.",
+        sentenceChinese: "我餓了。",
+
+        sentences: [
+            {
+                english: "i am hungry.",
+                chinese: "我餓了。"
+            },
+            {
+                english: "the kid is hungry.",
+                chinese: "這個小孩餓了。"
+            },
+            {
+                english: "she is hungry.",
+                chinese: "她餓了。"
+            }
+        ]
+    },
+
+    {
+        english: "thirsty",
+        chinese: "口渴的",
+        image: "images/thirsty.png",
+        partOfSpeech: "adjective",
+
+        sentence: "i am thirsty.",
+        sentenceChinese: "我口渴了。",
+
+        sentences: [
+            {
+                english: "i am thirsty.",
+                chinese: "我口渴了。"
+            },
+            {
+                english: "the kid is thirsty.",
+                chinese: "這個小孩口渴了。"
+            },
+            {
+                english: "she is thirsty.",
+                chinese: "她口渴了。"
+            }
+        ]
+    },
+
+    {
+        english: "sleepy",
+        chinese: "想睡的",
+        image: "images/sleepy.png",
+        partOfSpeech: "adjective",
+
+        sentence: "i am sleepy.",
+        sentenceChinese: "我想睡覺。",
+
+        sentences: [
+            {
+                english: "i am sleepy.",
+                chinese: "我想睡覺。"
+            },
+            {
+                english: "the kid is sleepy.",
+                chinese: "這個小孩想睡覺。"
+            },
+            {
+                english: "she is sleepy.",
+                chinese: "她想睡覺。"
+            }
+        ]
+    },
+
+    {
+        english: "scared",
+        chinese: "害怕的",
+        image: "images/scared.png",
+        partOfSpeech: "adjective",
+
+        sentence: "i am scared.",
+        sentenceChinese: "我很害怕。",
+
+        sentences: [
+            {
+                english: "i am scared.",
+                chinese: "我很害怕。"
+            },
+            {
+                english: "the kid is scared.",
+                chinese: "這個小孩很害怕。"
+            },
+            {
+                english: "she is scared.",
+                chinese: "她很害怕。"
+            }
+        ]
+    },
+
+        {
+        english: "excited",
+        chinese: "興奮的",
+        image: "images/excited.png",
+        partOfSpeech: "adjective",
+
+        sentence: "i am excited.",
+        sentenceChinese: "我很興奮。",
+
+        sentences: [
+            {
+                english: "i am excited.",
+                chinese: "我很興奮。"
+            },
+            {
+                english: "she is excited.",
+                chinese: "她很興奮。"
+            },
+            {
+                english: "the kid is excited.",
+                chinese: "這個小孩很興奮。"
             }
         ]
     }
-,
-{
-    english: "lock",
-    chinese: "鎖",
-    partOfSpeech: "noun",
-    sentences: [
-        {
-            english: "this is a lock.",
-            chinese: "這是一把鎖。"
-        }
-    ]
-},
-{
-    english: "map",
-    chinese: "地圖",
-    partOfSpeech: "noun",
-    sentences: [
-        {
-            english: "this is a map.",
-            chinese: "這是一張地圖。"
-        }
-    ]
-},
-{
-    english: "nest",
-    chinese: "鳥巢",
-    partOfSpeech: "noun",
-    sentences: [
-        {
-            english: "this is a nest.",
-            chinese: "這是一個鳥巢。"
-        }
-    ]
-},
-{
-    english: "ox",
-    chinese: "牛",
-    partOfSpeech: "noun",
-    sentences: [
-        {
-            english: "this is an ox.",
-            chinese: "這是一頭牛。"
-        }
-    ]
-},
-{
-    english: "plant",
-    chinese: "植物",
-    partOfSpeech: "noun",
-    sentences: [
-        {
-            english: "this is a plant.",
-            chinese: "這是一株植物。"
-        }
-    ]
-},
-{
-    english: "happy",
-    chinese: "開心的",
-    partOfSpeech: "adjective",
-    sentences: [
-        {
-            english: "i am happy.",
-            chinese: "我很開心。"
-        }
-    ]
-},
-{
-    english: "sad",
-    chinese: "難過的",
-    partOfSpeech: "adjective",
-    sentences: [
-        {
-            english: "i am sad.",
-            chinese: "我很難過。"
-        }
-    ]
-},
-{
-    english: "angry",
-    chinese: "生氣的",
-    partOfSpeech: "adjective",
-    sentences: [
-        {
-            english: "i am angry.",
-            chinese: "我很生氣。"
-        }
-    ]
-},
-{
-    english: "tired",
-    chinese: "累的",
-    partOfSpeech: "adjective",
-    sentences: [
-        {
-            english: "i am tired.",
-            chinese: "我很累。"
-        }
-    ]
-},
-{
-    english: "bored",
-    chinese: "無聊的",
-    partOfSpeech: "adjective",
-    sentences: [
-        {
-            english: "i am bored.",
-            chinese: "我很無聊。"
-        }
-    ]
-},
-{
-    english: "excited",
-    chinese: "興奮的",
-    partOfSpeech: "adjective",
-    sentences: [
-        {
-            english: "i am excited.",
-            chinese: "我很興奮。"
-        }
-    ]
+
+];
