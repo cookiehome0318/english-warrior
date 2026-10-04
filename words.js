@@ -600,7 +600,7 @@ const words = [
         ]
     },
 
-        {
+    {
         english: "gift",
         chinese: "禮物",
         image: "images/gift.png",
@@ -1000,7 +1000,7 @@ const words = [
         ]
     },
 
-        {
+    {
         english: "big",
         chinese: "大的",
         image: "images/big.png",
@@ -1099,8 +1099,7 @@ const words = [
             }
         ]
     },
-
-    {
+        {
         english: "fast",
         chinese: "快的",
         image: "images/fast.png",
@@ -1499,8 +1498,7 @@ const words = [
             }
         ]
     },
-
-    {
+        {
         english: "sleepy",
         chinese: "想睡的",
         image: "images/sleepy.png",
@@ -1550,7 +1548,7 @@ const words = [
         ]
     },
 
-        {
+    {
         english: "excited",
         chinese: "興奮的",
         image: "images/excited.png",
@@ -1571,6 +1569,363 @@ const words = [
             {
                 english: "the kid is excited.",
                 chinese: "這個小孩很興奮。"
+            }
+        ]
+    },
+
+    {
+        english: "car",
+        chinese: "汽車",
+        image: "images/car.png",
+        partOfSpeech: "noun",
+
+        sentence: "this is a car.",
+        sentenceChinese: "這是一台汽車。",
+
+        sentences: [
+            {
+                english: "this is a car.",
+                chinese: "這是一台汽車。"
+            },
+            {
+                english: "i have a car.",
+                chinese: "我有一台汽車。"
+            }
+        ]
+    },
+
+    {
+        english: "train",
+        chinese: "火車",
+        image: "images/train.png",
+        partOfSpeech: "noun",
+
+        sentence: "this is a train.",
+        sentenceChinese: "這是一列火車。",
+
+        sentences: [
+            {
+                english: "this is a train.",
+                chinese: "這是一列火車。"
+            },
+            {
+                english: "i like the train.",
+                chinese: "我喜歡火車。"
+            }
+        ]
+    },
+
+    {
+        english: "doll",
+        chinese: "洋娃娃",
+        image: "images/doll.png",
+        partOfSpeech: "noun",
+
+        sentence: "this is a doll.",
+        sentenceChinese: "這是一個洋娃娃。",
+
+        sentences: [
+            {
+                english: "this is a doll.",
+                chinese: "這是一個洋娃娃。"
+            },
+            {
+                english: "i have a doll.",
+                chinese: "我有一個洋娃娃。"
+            }
+        ]
+    },
+
+    {
+        english: "kite",
+        chinese: "風箏",
+        image: "images/kite.png",
+        partOfSpeech: "noun",
+
+        sentence: "this is a kite.",
+        sentenceChinese: "這是一個風箏。",
+
+        sentences: [
+            {
+                english: "this is a kite.",
+                chinese: "這是一個風箏。"
+            },
+            {
+                english: "i fly a kite.",
+                chinese: "我放風箏。"
+            }
+        ]
+    },
+
+    {
+        english: "yo-yo",
+        chinese: "溜溜球",
+        image: "images/yo-yo.png",
+        partOfSpeech: "noun",
+
+        sentence: "this is a yo-yo.",
+        sentenceChinese: "這是一個溜溜球。",
+
+        sentences: [
+            {
+                english: "this is a yo-yo.",
+                chinese: "這是一個溜溜球。"
+            },
+            {
+                english: "i have a yo-yo.",
+                chinese: "我有一個溜溜球。"
+            }
+        ]
+    },
+
+    {
+        english: "top",
+        chinese: "陀螺",
+        image: "images/top.png",
+        partOfSpeech: "noun",
+
+        sentence: "this is a top.",
+        sentenceChinese: "這是一個陀螺。",
+
+        sentences: [
+            {
+                english: "this is a top.",
+                chinese: "這是一個陀螺。"
+            },
+            {
+                english: "the top spins.",
+                chinese: "陀螺會旋轉。"
+            }
+        ]
+    },
+
+    {
+        english: "robot",
+        chinese: "機器人",
+        image: "images/robot.png",
+        partOfSpeech: "noun",
+
+        sentence: "this is a robot.",
+        sentenceChinese: "這是一個機器人。",
+
+        sentences: [
+            {
+                english: "this is a robot.",
+                chinese: "這是一個機器人。"
+            },
+            {
+                english: "i like the robot.",
+                chinese: "我喜歡這個機器人。"
+            }
+        ]
+    },
+
+    {
+        english: "bike",
+        chinese: "腳踏車",
+        image: "images/bike.png",
+        partOfSpeech: "noun",
+
+        sentence: "this is a bike.",
+        sentenceChinese: "這是一台腳踏車。",
+
+        sentences: [
+            {
+                english: "this is a bike.",
+                chinese: "這是一台腳踏車。"
+            },
+            {
+                english: "i ride a bike.",
+                chinese: "我騎腳踏車。"
+            }
+        ]
+    },
+
+    {
+        english: "block",
+        chinese: "積木",
+        image: "images/block.png",
+        partOfSpeech: "noun",
+
+        sentence: "this is a block.",
+        sentenceChinese: "這是一塊積木。",
+
+        sentences: [
+            {
+                english: "this is a block.",
+                chinese: "這是一塊積木。"
+            },
+            {
+                english: "i have a block.",
+                chinese: "我有一塊積木。"
+            }
+        ]
+    },
+
+    {
+        english: "puzzle",
+        chinese: "拼圖",
+        image: "images/puzzle.png",
+        partOfSpeech: "noun",
+
+        sentence: "this is a puzzle.",
+        sentenceChinese: "這是一個拼圖。",
+
+        sentences: [
+            {
+                english: "this is a puzzle.",
+                chinese: "這是一個拼圖。"
+            },
+            {
+                english: "i like this puzzle.",
+                chinese: "我喜歡這個拼圖。"
+            }
+        ]
+    },
+
+    {
+        english: "ball",
+        chinese: "球",
+        image: "images/ball.png",
+        partOfSpeech: "noun",
+
+        sentence: "this is a ball.",
+        sentenceChinese: "這是一顆球。",
+
+        sentences: [
+            {
+                english: "this is a ball.",
+                chinese: "這是一顆球。"
+            },
+            {
+                english: "i have a ball.",
+                chinese: "我有一顆球。"
+            }
+        ]
+    },
+
+    {
+        english: "marble",
+        chinese: "彈珠",
+        image: "images/marble.png",
+        partOfSpeech: "noun",
+
+        sentence: "this is a marble.",
+        sentenceChinese: "這是一顆彈珠。",
+
+        sentences: [
+            {
+                english: "this is a marble.",
+                chinese: "這是一顆彈珠。"
+            },
+            {
+                english: "i have a marble.",
+                chinese: "我有一顆彈珠。"
+            }
+        ]
+    },
+
+    {
+        english: "queen",
+        chinese: "女王",
+        image: "images/queen.png",
+        partOfSpeech: "noun",
+
+        sentence: "she is a queen.",
+        sentenceChinese: "她是一位女王。",
+
+        sentences: [
+            {
+                english: "she is a queen.",
+                chinese: "她是一位女王。"
+            },
+            {
+                english: "the queen is happy.",
+                chinese: "女王很開心。"
+            }
+        ]
+    },
+
+    {
+        english: "rock",
+        chinese: "石頭",
+        image: "images/rock.png",
+        partOfSpeech: "noun",
+
+        sentence: "this is a rock.",
+        sentenceChinese: "這是一塊石頭。",
+
+        sentences: [
+            {
+                english: "this is a rock.",
+                chinese: "這是一塊石頭。"
+            },
+            {
+                english: "the rock is big.",
+                chinese: "這塊石頭很大。"
+            }
+        ]
+    },
+
+    {
+        english: "sun",
+        chinese: "太陽",
+        image: "images/sun.png",
+        partOfSpeech: "noun",
+
+        sentence: "the sun is hot.",
+        sentenceChinese: "太陽很熱。",
+
+        sentences: [
+            {
+                english: "the sun is hot.",
+                chinese: "太陽很熱。"
+            },
+            {
+                english: "i see the sun.",
+                chinese: "我看見太陽。"
+            }
+        ]
+    },
+
+    {
+        english: "tea",
+        chinese: "茶",
+        image: "images/tea.png",
+        partOfSpeech: "noun",
+
+        sentence: "this is tea.",
+        sentenceChinese: "這是茶。",
+
+        sentences: [
+            {
+                english: "this is tea.",
+                chinese: "這是茶。"
+            },
+            {
+                english: "i like tea.",
+                chinese: "我喜歡茶。"
+            }
+        ]
+    },
+
+    {
+        english: "uncle",
+        chinese: "叔叔／舅舅／伯伯",
+        image: "images/uncle.png",
+        partOfSpeech: "noun",
+
+        sentence: "this is my uncle.",
+        sentenceChinese: "這是我的叔叔。",
+
+        sentences: [
+            {
+                english: "this is my uncle.",
+                chinese: "這是我的叔叔。"
+            },
+            {
+                english: "my uncle is nice.",
+                chinese: "我的叔叔很好。"
             }
         ]
     }
